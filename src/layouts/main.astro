@@ -1,31 +1,23 @@
 ---
 import "../styles/global.css";
 
-const {
-  title = "Devver | Déployez en 1 commande",
-  description = "Prévisualisez, validez et shippez vos PRs avec des URLs éphémères ultra-rapides.",
-} = Astro.props;
+const { title = "Devver | Déployez en 1 commande", description = "Prévisualisez, validez et shippez vos PRs avec des URLs éphémères ultra-rapides." } = Astro.props;
 ---
 
 <html lang="fr" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap"
-      rel="stylesheet"
-    />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-  </head>
-  <body
-    class="min-h-screen bg-linear-to-b from-white via-slate-50 to-white text-foreground antialiased"
-  >
-    <slot />
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+    </head>
+    <body class="min-h-screen bg-linear-to-b from-white via-slate-50 to-white text-foreground antialiased">
+        <slot />
+    </body>
 </html>
