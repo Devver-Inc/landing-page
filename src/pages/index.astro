@@ -1,536 +1,210 @@
 ---
+import DeploymentTimer from "../components/custom/_utils/DeploymentTimer";
+import SpeedVisualization from "../components/custom/_utils/SpeedVisualization";
+import ContactSection from "../components/custom/sections/ContactSection";
+import FeaturesShowcase from "../components/custom/sections/FeaturesShowcase";
+import FloatingNavbar from "../components/custom/sections/FloatingNavbar";
+import HeroSection from "../components/custom/sections/HeroSection";
+import HowItWorksSection from "../components/custom/sections/HowItWorksSection";
+import PricingSection from "../components/custom/sections/PricingSection";
+import TestimonialsSection from "../components/custom/sections/TestimonialsSection";
 import MainLayout from "../layouts/main.astro";
 
 const meta = {
-    title: "Devver | Déployez une URL éphémère en 1 commande",
-    description: "Prévisualisez, validez et shippez vos PRs en quelques secondes grâce aux environnements éphémères Devver.",
+    title: "Devver | Deploy Test Environments Instantly",
+    description: "Deploy ephemeral test environments in seconds. Let your clients and managers test features with instant preview URLs.",
 };
-
-const stats = [
-    { label: "Mise en ligne", value: "-2 min" },
-    { label: "Uptime ciblé", value: "99.99%" },
-    { label: "Sécurité", value: "SSO · RBAC" },
-    { label: "Support", value: "SLA 24/7" },
-];
-
-const features = [
-    {
-        title: "Déploiements éphémères",
-        description: "Une URL par branche ou PR, isolée et prêtée à vos QA, PM ou clients.",
-    },
-    {
-        title: "CI/CD simplifiée",
-        description: "Une commande ou un hook Git pour builder, tester et publier vos previews.",
-    },
-    {
-        title: "Observabilité native",
-        description: "Logs, métriques, et alertes directement intégrés pour diagnostiquer en live.",
-    },
-    {
-        title: "Sécurité by design",
-        description: "SSO, RBAC, liens privés, et suppressions auto pour rester conforme.",
-    },
-    {
-        title: "Collaboration fluide",
-        description: "Commentaires contextualisés, checklists de validation et partage en un clic.",
-    },
-    {
-        title: "Cloud ou self-hosté",
-        description: "Choisissez notre infra managée ou déployez Devver sur votre cloud.",
-    },
-];
-
-const steps = [
-    {
-        title: "Push ton code",
-        description: "Déclenche automatiquement un build et un preview isolé.",
-    },
-    {
-        title: "Déploie en 1 commande",
-        description: "npx devver deploy --preview et c’est en ligne pour ton équipe.",
-    },
-    {
-        title: "Partage et valide",
-        description: "URLs privées, protégées, prêtes pour la QA, le produit et les clients.",
-    },
-];
-
-const integrations = ["GitHub", "GitLab", "Linear", "Slack", "Vercel", "AWS"];
-
-const pricing = [
-    {
-        name: "Starter",
-        price: "Gratuit",
-        description: "Idéal pour tester en équipe réduite.",
-        cta: "Commencer gratuitement",
-        features: ["3 environnements actifs", "Lien privé / protégé", "Logs en temps réel"],
-        highlight: false,
-    },
-    {
-        name: "Team",
-        price: "29€/mo",
-        description: "Pour shipper vite avec des workflows structurés.",
-        cta: "Passer à Team",
-        features: ["Environnements illimités", "SSO & RBAC", "Alertes + métriques", "Support prioritaire"],
-        highlight: true,
-    },
-    {
-        name: "Enterprise",
-        price: "Sur devis",
-        description: "Compliance avancée et support dédié.",
-        cta: "Parler à l’équipe",
-        features: ["Self-hosted ou VPC", "SLA 24/7", "Audit & traçabilité", "Onboarding dédié"],
-        highlight: false,
-    },
-];
 ---
 
 <MainLayout {...meta}>
-    <div class="min-h-screen">
-        <header class="sticky top-0 z-30 border-b border-slate-200/70 bg-white/80 backdrop-blur">
-            <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-                <div class="flex items-center gap-2">
-                    <img src="/favicon.png" alt="Devver Logo" class="h-6 w-6" />
-                    <div>
-                        <p class="text-lg font-semibold text-slate-900">Devver</p>
-                        <p class="text-xs text-slate-500">Preview everything, faster.</p>
+    <div class="min-h-screen bg-slate-900">
+        <!-- Floating Navbar -->
+        <FloatingNavbar client:load />
+
+        <!-- Hero Section with 3D Effects -->
+        <div class="relative">
+            <HeroSection client:load />
+        </div>
+
+        <!-- Features Showcase with Animations -->
+        <FeaturesShowcase client:load />
+
+        <!-- Speed Visualization Section -->
+        <section class="relative py-32 bg-white overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-white to-white"></div>
+
+            <div class="relative max-w-7xl mx-auto px-4">
+                <div class="text-center mb-20">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30">
+                        <span class="text-2xl">⚡</span>
+                        <span class="text-sm font-semibold text-orange-700">Blazing Fast</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 px-4">Speed That Speaks for Itself</h2>
+                    <p class="text-lg md:text-xl text-slate-700 max-w-2xl mx-auto px-4 font-medium">
+                        Watch how fast Devver deploys your environments. No exaggeration, no tricks—just pure speed.
+                    </p>
+                </div>
+
+                <div class="relative h-96 rounded-3xl bg-gradient-to-br from-slate-900 to-indigo-950 overflow-hidden shadow-2xl border border-slate-800">
+                    <SpeedVisualization client:load />
+
+                    <div class="absolute inset-0 flex items-center justify-center z-10">
+                        <DeploymentTimer client:load />
                     </div>
                 </div>
-                <nav class="hidden items-center gap-6 text-sm text-slate-700 md:flex">
-                    <a class="hover:text-slate-900" href="#product">Produit</a>
-                    <a class="hover:text-slate-900" href="#features">Fonctionnalités</a>
-                    <a class="hover:text-slate-900" href="#pricing">Pricing</a>
-                    <a class="hover:text-slate-900" href="#integrations">Intégrations</a>
-                </nav>
-                <div class="">
-                    <a
-                        class="hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900 md:inline-flex"
-                        href="#product"
-                    >
-                        Voir la doc
-                    </a>
-                    <a class="inline-flex items-center rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500" href="#cta">
-                        Commencer
-                    </a>
+
+                <!-- Stats Grid -->
+                <div class="grid md:grid-cols-4 gap-8 mt-16">
+                    <div class="text-center p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">99.99%</div>
+                        <div class="text-slate-600 font-medium">Uptime SLA</div>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">&lt;1min</div>
+                        <div class="text-slate-600 font-medium">Deploy Time</div>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">10K+</div>
+                        <div class="text-slate-600 font-medium">Developers</div>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">1M+</div>
+                        <div class="text-slate-600 font-medium">Deployments</div>
+                    </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <main>
-            <section class="relative overflow-hidden border-b border-slate-200/70 bg-linear-to-b from-white via-slate-50 to-white">
-                <div class="pointer-events-none absolute inset-x-0 top-[-120px] h-64 bg-linear-to-b from-indigo-100/60 via-white to-transparent blur-3xl"></div>
-                <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-14 lg:grid-cols-2">
-                    <div class="relative z-10 space-y-6">
-                        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-                            🚀 Déploiements éphémères en quelques secondes
-                        </div>
-                        <div class="space-y-4">
-                            <h1 class="text-4xl font-semibold leading-tight text-slate-900 sm:text-5xl">
-                                Déployez vos apps & previews
-                                <span class="text-indigo-600"> en 1 commande</span>
-                            </h1>
-                            <p class="max-w-2xl text-lg text-slate-600">
-                                Donnez une URL propre à chaque PR. Devver build, sécurise et partage vos environnements en continu pour vos QA, PM et clients sans friction.
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <a
-                                class="inline-flex items-center justify-center gap-2 rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-200 transition hover:-translate-y-0.5 hover:bg-indigo-500"
-                                href="#cta"
-                            >
-                                Commencer gratuitement
-                            </a>
-                            <a
-                                class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-300"
-                                href="#product"
-                            >
-                                Voir la démo
-                            </a>
-                            <div class="flex items-center gap-3 text-sm text-slate-500">
-                                <span class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 font-semibold text-slate-700"> ✅ URLs privées </span>
-                                <span class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 font-semibold text-slate-700"> 🔒 SSO & RBAC </span>
-                            </div>
-                        </div>
-                        <div class="grid gap-4 sm:grid-cols-2">
-                            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                                <div class="mb-3 flex items-center justify-between">
-                                    <p class="text-sm font-semibold text-slate-800">Commande unique</p>
-                                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Ready</span>
-                                </div>
-                                <div class="rounded-xl bg-slate-900 p-4 font-mono text-sm text-slate-100 shadow-inner">
-                                    <div class="mb-2 flex items-center gap-2 text-xs text-emerald-300">
-                                        <span class="size-2 rounded-full bg-emerald-400"></span>
-                                        Preview actif
-                                    </div>
-                                    <code>npx devver deploy --preview</code>
-                                </div>
-                                <div class="mt-4 grid grid-cols-2 gap-3 text-xs text-slate-600">
-                                    <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
-                                        <p class="text-slate-500">Build</p>
-                                        <p class="font-semibold text-slate-900">45s</p>
-                                    </div>
-                                    <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
-                                        <p class="text-slate-500">Latence</p>
-                                        <p class="font-semibold text-slate-900">&lt;40ms</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                                <p class="text-sm font-semibold text-slate-800">Diff & validation</p>
-                                <ul class="mt-3 space-y-2 text-sm text-slate-600">
-                                    <li class="flex items-start gap-2">
-                                        <span class="mt-1 size-2 rounded-full bg-indigo-500"></span>
-                                        Liens privés et expirations auto pour chaque PR.
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="mt-1 size-2 rounded-full bg-indigo-500"></span>
-                                        Checklists QA, notes produit, validation client en contexte.
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="mt-1 size-2 rounded-full bg-indigo-500"></span>
-                                        Logs + métriques intégrés pour dépiler plus vite.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="pointer-events-none absolute inset-0 scale-105 rounded-3xl bg-linear-to-br from-indigo-100 via-blue-100/70 to-white blur-3xl"></div>
-                        <div class="relative space-y-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-indigo-100">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Aperçu live</p>
-                                    <p class="text-lg font-semibold text-slate-900">devver.app/preview/feature-123</p>
-                                </div>
-                                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">En ligne</span>
-                            </div>
-                            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                                <div class="flex items-center justify-between text-sm text-slate-700">
-                                    <p class="font-semibold">Health checks</p>
-                                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">OK</span>
-                                </div>
-                                <div class="mt-3 grid grid-cols-2 gap-3 text-xs text-slate-600">
-                                    <div class="rounded-xl bg-white p-3 shadow-xs">
-                                        <p class="text-slate-500">Front</p>
-                                        <p class="font-semibold text-slate-900">build succeeded</p>
-                                    </div>
-                                    <div class="rounded-xl bg-white p-3 shadow-xs">
-                                        <p class="text-slate-500">API</p>
-                                        <p class="font-semibold text-slate-900">latency 32ms</p>
-                                    </div>
-                                    <div class="rounded-xl bg-white p-3 shadow-xs">
-                                        <p class="text-slate-500">Tests</p>
-                                        <p class="font-semibold text-slate-900">112/112</p>
-                                    </div>
-                                    <div class="rounded-xl bg-white p-3 shadow-xs">
-                                        <p class="text-slate-500">Sécurité</p>
-                                        <p class="font-semibold text-slate-900">SSO + RBAC</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rounded-2xl border border-indigo-100 bg-indigo-50/80 p-4">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div>
-                                        <p class="text-sm font-semibold text-indigo-900">Handoff produit</p>
-                                        <p class="text-sm text-indigo-800/80">Partage le lien à QA, Produit ou Client avec notes et checklist intégrées.</p>
-                                    </div>
-                                    <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-indigo-700 shadow-sm">Partage</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- How It Works Section -->
+        <HowItWorksSection client:load />
+
+        <!-- Testimonials Section -->
+        <TestimonialsSection client:load />
+
+        <!-- Pricing Section -->
+        <PricingSection client:visible />
+
+        <!-- Final CTA Section -->
+        <section id="waitlist" class="relative py-32 bg-slate-950 overflow-hidden">
+            <div class="absolute inset-0 bg-grid-slate-800 [mask-image:radial-gradient(ellipse_at_center,white,transparent)] opacity-30"></div>
+
+            <div
+                class="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full opacity-15 animate-pulse"
+                style="filter: blur(60px);"
+            >
+            </div>
+
+            <div class="relative max-w-4xl mx-auto px-4 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-slate-800/80 border border-slate-700">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-sm font-semibold text-white">Join 10,000+ developers</span>
                 </div>
 
-                <div class="mx-auto max-w-6xl px-4 pb-10">
-                    <div class="grid gap-4 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm sm:grid-cols-2 md:grid-cols-4">
-                        {
-                            stats.map((item) => (
-                                <div class="flex flex-col gap-1">
-                                    <p class="text-2xl font-semibold text-slate-900">{item.value}</p>
-                                    <p class="text-sm text-slate-600">{item.label}</p>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
-            </section>
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">Ready to Ship Faster?</h2>
+                <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">Start deploying test environments in seconds. No credit card required.</p>
 
-            <section id="product" class="mx-auto max-w-6xl px-4 py-14">
-                <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">Plateforme</p>
-                        <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Tout ce qu’il faut pour shipper vite</h2>
-                        <p class="max-w-3xl text-base text-slate-600">
-                            Devver orchestre vos previews, vos validations et votre sécurité. Un point d’entrée unique pour que dev, QA et produit travaillent ensemble sans perdre
-                            de temps.
-                        </p>
-                    </div>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                     <a
-                        class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-300"
-                        href="#cta"
+                        href="https://app.devver.com/signup"
+                        class="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full shadow-lg shadow-indigo-500/50 overflow-hidden hover:scale-105 transition-transform"
                     >
-                        Créer mon compte
+                        <span class="relative z-10 flex items-center gap-2">
+                            Start Free Trial
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="#how-it-works" class="px-8 py-4 bg-slate-800 text-white font-semibold rounded-full border border-slate-700 hover:bg-slate-700 transition-all">
+                        See How It Works
                     </a>
                 </div>
 
-                <div id="features" class="mt-8 grid gap-6 md:grid-cols-2">
-                    {
-                        features.map((feature) => (
-                            <div class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                                <div class="absolute inset-0 bg-linear-to-br from-indigo-50 via-transparent to-white opacity-0 transition group-hover:opacity-100" />
-                                <div class="relative space-y-3">
-                                    <div class="inline-flex rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">{feature.title}</div>
-                                    <p class="text-base text-slate-600">{feature.description}</p>
-                                </div>
-                            </div>
-                        ))
-                    }
+                <div class="flex items-center justify-center flex-wrap gap-8 text-sm text-slate-400">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        No credit card required
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        14-day free trial
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Cancel anytime
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="mx-auto max-w-6xl px-4 py-14">
-                <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-                    <div class="space-y-4">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">Comment ça marche</p>
-                        <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">De la PR au partage en quelques minutes</h2>
-                        <p class="max-w-2xl text-base text-slate-600">
-                            Intégrez Devver dans votre pipeline existant. Nous gérons les builds, la distribution, la sécurité et la mise au rebut des environnements pour que vous
-                            restiez focus sur le produit.
-                        </p>
-                        <div class="space-y-6">
-                            {
-                                steps.map((step, index) => (
-                                    <div class="flex gap-4">
-                                        <div class="flex flex-col items-center">
-                                            <div class="flex size-10 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white shadow-md">
-                                                {index + 1}
-                                            </div>
-                                            {index < steps.length - 1 && <div class="h-full w-px flex-1 bg-slate-200" />}
-                                        </div>
-                                        <div class="space-y-1">
-                                            <p class="text-lg font-semibold text-slate-900">{step.title}</p>
-                                            <p class="text-sm text-slate-600">{step.description}</p>
-                                        </div>
-                                    </div>
-                                ))
-                            }
+        <!-- Contact Section -->
+        <ContactSection client:load />
+
+        <!-- Footer -->
+        <footer class="bg-slate-950 border-t border-slate-800 py-12">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <img src="/favicon.png" alt="Devver Logo" class="h-8 w-8 rounded-lg" />
+                            <span class="text-xl font-bold text-white">Devver</span>
                         </div>
+                        <p class="text-slate-400 text-sm">Deploy test environments instantly and ship faster than ever.</p>
                     </div>
-                    <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-indigo-100">
-                        <div class="absolute inset-0 bg-linear-to-br from-indigo-50 via-white to-slate-50"></div>
-                        <div class="relative space-y-5">
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-semibold text-slate-900">Workflow Git</p>
-                                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Automatisé</span>
-                            </div>
-                            <div class="rounded-2xl border border-slate-100 bg-slate-900 p-4 font-mono text-sm text-slate-100 shadow-inner">
-                                <p class="text-xs text-emerald-300">.github/workflows/devver.yml</p>
-                                <pre
-                                    class="mt-2 whitespace-pre-wrap">
-name: Devver Preview
-on: pull_request
-jobs:
-  deploy:
-    steps:
-      - uses: actions/checkout@v4
-      - run: npm ci
-      - run: npx devver deploy --preview
-                </pre>
-                            </div>
-                            <div class="grid grid-cols-2 gap-3 text-sm text-slate-700">
-                                <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-xs">
-                                    <p class="text-slate-500">Accès</p>
-                                    <p class="font-semibold text-slate-900">SSO, liens privés</p>
-                                </div>
-                                <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-xs">
-                                    <p class="text-slate-500">Nettoyage</p>
-                                    <p class="font-semibold text-slate-900">Auto après merge</p>
-                                </div>
-                                <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-xs">
-                                    <p class="text-slate-500">Collab</p>
-                                    <p class="font-semibold text-slate-900">Notes + checklists</p>
-                                </div>
-                                <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-xs">
-                                    <p class="text-slate-500">Sécu</p>
-                                    <p class="font-semibold text-slate-900">RBAC, audit</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Product</h4>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+                            <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+                            <li><a href="#docs" class="hover:text-white transition-colors">Documentation</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+                        </ul>
                     </div>
-                </div>
-            </section>
-
-            <section id="integrations" class="mx-auto max-w-6xl px-4 pb-14">
-                <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-                    <div class="flex flex-col items-center gap-6 text-center">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">Intégrations natives</p>
-                        <h3 class="text-2xl font-semibold text-slate-900 sm:text-3xl">Connectez Devver à vos outils existants</h3>
-                        <div class="flex flex-wrap items-center justify-center gap-3">
-                            {
-                                integrations.map((integration) => (
-                                    <span class="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800">
-                                        {integration}
-                                    </span>
-                                ))
-                            }
-                        </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Company</h4>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        </ul>
                     </div>
-                </div>
-            </section>
-
-            <section id="pricing" class="mx-auto max-w-6xl px-4 pb-14">
-                <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">Pricing</p>
-                        <h3 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Transparent, selon votre stade</h3>
-                        <p class="max-w-2xl text-base text-slate-600">
-                            Démarrez gratuitement, passez en Team quand vous avez besoin d’alertes, de sécurité avancée et de performances garanties.
-                        </p>
-                    </div>
-                    <a
-                        class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-300"
-                        href="#cta"
-                    >
-                        Parler aux équipes
-                    </a>
-                </div>
-
-                <div class="mt-8 grid gap-6 md:grid-cols-3">
-                    {
-                        pricing.map((plan) => (
-                            <div
-                                class={`relative flex h-full flex-col gap-4 rounded-3xl border ${plan.highlight ? "border-indigo-200 bg-indigo-50/50 shadow-md shadow-indigo-100" : "border-slate-200 bg-white shadow-sm"} p-6`}
-                            >
-                                {plan.highlight && <span class="absolute right-4 top-4 rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">Recommandé</span>}
-                                <div class="space-y-1">
-                                    <p class="text-sm font-semibold text-slate-900">{plan.name}</p>
-                                    <p class="text-3xl font-semibold text-slate-900">{plan.price}</p>
-                                    <p class="text-sm text-slate-600">{plan.description}</p>
-                                </div>
-                                <div class="space-y-2 text-sm text-slate-700">
-                                    {plan.features.map((item) => (
-                                        <div class="flex items-start gap-2">
-                                            <span class="mt-1 size-2 rounded-full bg-indigo-500" />
-                                            <span>{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div class="mt-auto">
-                                    <a
-                                        class={`inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ${
-                                            plan.highlight
-                                                ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-500"
-                                                : "border border-slate-200 text-slate-800 hover:border-slate-300"
-                                        }`}
-                                        href="#cta"
-                                    >
-                                        {plan.cta}
-                                    </a>
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
-            </section>
-
-            <section class="mx-auto max-w-6xl px-4 pb-14">
-                <div class="grid items-center gap-10 rounded-3xl border border-slate-200 bg-white p-10 shadow-sm lg:grid-cols-[1.1fr_0.9fr]">
-                    <div class="space-y-4">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">Ils valident</p>
-                        <h3 class="text-2xl font-semibold text-slate-900 sm:text-3xl">“On shippe 3x plus vite qu’avant”</h3>
-                        <p class="text-base text-slate-600">
-                            “Avec Devver, chaque PR a son URL isolée. Produit valide en live, QA vérifie sans attendre, et nos clients voient les features avant le merge. On a
-                            réduit le temps de review de 3 jours à quelques heures.”
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="flex size-12 items-center justify-center rounded-full bg-indigo-600/10 text-base font-semibold text-indigo-700">LP</div>
-                            <div>
-                                <p class="text-sm font-semibold text-slate-900">Louise Petit</p>
-                                <p class="text-xs text-slate-500">CTO, Squad Fintech</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-                        <p class="text-sm font-semibold text-slate-900">Ce que vous gagnez</p>
-                        <ul class="mt-4 space-y-3 text-sm text-slate-700">
-                            <li class="flex items-start gap-2">
-                                <span class="mt-1 size-2 rounded-full bg-indigo-500"></span>
-                                0 attente pour valider une PR : tout le monde teste sur la même URL.
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="mt-1 size-2 rounded-full bg-indigo-500"></span>
-                                Risque réduit : liens privés, expirations auto, audit complet.
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="mt-1 size-2 rounded-full bg-indigo-500"></span>
-                                Meilleur focus pour les devs : vous shippez, Devver opère.
-                            </li>
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Legal</h4>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Terms</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
                         </ul>
                     </div>
                 </div>
-            </section>
-        </main>
-
-        <footer id="cta" class="border-t border-slate-200 bg-white">
-            <div class="mx-auto grid max-w-6xl gap-6 px-4 py-12 lg:grid-cols-[1.2fr_0.8fr]">
-                <div class="space-y-3">
-                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">Prêt à accélérer</p>
-                    <h3 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Déployez votre première URL en 5 minutes</h3>
-                    <p class="max-w-2xl text-base text-slate-600">
-                        Essayez Devver gratuitement ou parlez à l’équipe pour connecter votre CI/CD, votre SSO et vos outils existants.
-                    </p>
-                    <div class="flex flex-wrap items-center gap-3">
-                        <a
-                            class="inline-flex items-center justify-center rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-indigo-500"
-                            href="#pricing"
-                        >
-                            Démarrer gratuitement
+                <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-sm text-slate-400">© 2024 Devver. All rights reserved.</p>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                                ></path>
+                            </svg>
                         </a>
-                        <a
-                            class="inline-flex items-center justify-center rounded-full border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-300"
-                            href="#product"
-                        >
-                            Planifier une démo
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                                ></path>
+                            </svg>
                         </a>
                     </div>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-                    <p class="text-sm font-semibold text-slate-900">Checklist onboarding</p>
-                    <ul class="mt-4 space-y-3 text-sm text-slate-700">
-                        <li class="flex items-start gap-2">
-                            <span class="mt-1 size-2 rounded-full bg-emerald-500"></span>
-                            Connecte ton repo GitHub ou GitLab.
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="mt-1 size-2 rounded-full bg-emerald-500"></span>
-                            Ajoute l’action Devver à ta CI en 3 lignes.
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="mt-1 size-2 rounded-full bg-emerald-500"></span>
-                            Invite ton équipe et choisis les droits d’accès.
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="mt-1 size-2 rounded-full bg-emerald-500"></span>
-                            Active les alertes et le nettoyage auto post-merge.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-slate-200 bg-slate-50">
-                <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-6 text-sm text-slate-600">
-                    <div class="flex items-center gap-2 font-semibold text-slate-800">
-                        <span class="flex size-9 items-center justify-center rounded-xl bg-indigo-600 text-white">DV</span>
-                        Devver
-                    </div>
-                    <div class="flex flex-wrap items-center gap-4">
-                        <a class="hover:text-slate-900" href="#">Produit</a>
-                        <a class="hover:text-slate-900" href="#">Documentation</a>
-                        <a class="hover:text-slate-900" href="#">Sécurité</a>
-                        <a class="hover:text-slate-900" href="#">Contact</a>
-                    </div>
-                    <p class="text-xs text-slate-500">
-                        © {new Date().getFullYear()} Devver. Tous droits réservés.
-                    </p>
                 </div>
             </div>
         </footer>
