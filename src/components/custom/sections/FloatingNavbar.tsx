@@ -72,26 +72,12 @@ export default function FloatingNavbar() {
               {/* CTA Buttons */}
               <div className="hidden md:flex items-center gap-3">
                 <motion.a
-                  href="#login"
+                  href="https://app.devver.app"
                   className="px-4 py-2 text-sm font-semibold text-white rounded-lg hover:bg-white/10 transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Sign In
-                </motion.a>
-                <motion.a
-                  href="#waitlist"
-                  className="group relative px-5 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-lg overflow-hidden shadow-lg shadow-indigo-500/50"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Start Free
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.a>
               </div>
 
@@ -133,18 +119,11 @@ export default function FloatingNavbar() {
             ))}
             <div className="pt-4 border-t border-white/10 space-y-2">
               <a
-                href="#login"
+                href="https://app.devver.app"
                 className="block px-4 py-3 text-sm font-semibold text-white text-center rounded-lg hover:bg-white/10 transition-all"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Sign In
-              </a>
-              <a
-                href="#waitlist"
-                className="block px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold text-center rounded-lg shadow-lg shadow-indigo-500/50"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Start Free
               </a>
             </div>
           </div>
