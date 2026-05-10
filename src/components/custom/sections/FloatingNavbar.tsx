@@ -4,15 +4,11 @@ import { useEffect, useState } from "react";
 export default function FloatingNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
-
-  const navbarBackground = useTransform(scrollY, [0, 100], ["rgba(15, 23, 42, 0)", "rgba(15, 23, 42, 0.95)"]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -20,34 +16,34 @@ export default function FloatingNavbar() {
   const navItems = [
     { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Integrations", href: "#integrations" },
     { label: "Pricing", href: "#pricing" },
     { label: "Docs", href: "#docs" },
   ];
 
   return (
     <>
-      <motion.nav className="fixed top-0 left-0 right-0 z-50" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }}>
-        <div className="mx-auto max-w-7xl px-4 py-4">
-          <motion.div
-            style={{
-              backgroundColor: navbarBackground,
-            }}
-            className={`rounded-2xl border transition-all duration-300 ${isScrolled ? "border-white/20 shadow-2xl shadow-indigo-500/10" : "border-white/10"}`}
+      <motion.nav
+        className="fixed top-0 left-0 right-0 z-50"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <div className="mx-auto max-w-7xl px-4 py-3">
+          <div
+            className={`glass-surface-strong rounded-2xl transition-all duration-300 ${
+              isScrolled ? "shadow-glass" : ""
+            }`}
           >
-            <div className="flex items-center justify-between px-6 py-4">
+            <div className="flex items-center justify-between px-5 py-3">
               {/* Logo */}
-              <motion.a href="#" className="flex items-center gap-3 group" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <div className="relative">
-                  <div
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl opacity-20 group-hover:opacity-40 transition-opacity"
-                    style={{ filter: "blur(8px)" }}
-                  ></div>
-                  <img src="/favicon.png" alt="Devver Logo" className="relative h-10 w-10 rounded-xl" />
-                </div>
-                <div>
-                  <span className="text-xl font-bold text-white">Devver</span>
-                  <span className="ml-2 text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/30">Beta</span>
+              <motion.a
+                href="#"
+                className="flex items-center gap-2.5 group"
+              >
+                <img src="/favicon.png" alt="Devver Logo" className="h-8 w-8 rounded-lg" />
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold text-foreground">Devver</span>
+                  <span className="rounded-full px-2 py-0.5 text-xs font-medium border border-border bg-muted text-muted-foreground">Beta</span>
                 </div>
               </motion.a>
 
@@ -57,33 +53,38 @@ export default function FloatingNavbar() {
                   <motion.a
                     key={item.href}
                     href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-all"
-                    initial={{ opacity: 0, y: -20 }}
+                    className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground rounded-md hover:bg-accent transition-all"
+                    initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
                     {item.label}
                   </motion.a>
                 ))}
               </div>
 
-              {/* CTA Buttons */}
-              <div className="hidden md:flex items-center gap-3">
+              {/* CTA */}
+              <div className="hidden md:flex items-center gap-2">
                 <motion.a
                   href="https://app.devver.app"
-                  className="px-4 py-2 text-sm font-semibold text-white rounded-lg hover:bg-white/10 transition-all"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="border border-border bg-card/70 rounded-md h-9 px-4 text-sm font-medium text-foreground hover:bg-accent transition-all inline-flex items-center"
                 >
                   Sign In
+                </motion.a>
+                <motion.a
+                  href="https://app.devver.app"
+                  className="bg-primary text-primary-foreground rounded-md h-9 px-4 text-sm font-medium hover:opacity-90 transition-all inline-flex items-center"
+                >
+                  Get Started
                 </motion.a>
               </div>
 
               {/* Mobile Menu Button */}
-              <button className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button
+                className="md:hidden p-2 text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {isMobileMenuOpen ? (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   ) : (
@@ -92,7 +93,7 @@ export default function FloatingNavbar() {
                 </svg>
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </motion.nav>
 
@@ -103,27 +104,34 @@ export default function FloatingNavbar() {
           opacity: isMobileMenuOpen ? 1 : 0,
           height: isMobileMenuOpen ? "auto" : 0,
         }}
-        className="fixed top-24 left-0 right-0 z-40 md:hidden overflow-hidden"
+        className="fixed top-20 left-0 right-0 z-40 md:hidden overflow-hidden"
       >
-        <div className="mx-4 bg-slate-900/98 rounded-2xl border border-white/20 shadow-2xl">
-          <div className="p-4 space-y-2">
+        <div className="mx-4 glass-surface-strong rounded-2xl">
+          <div className="p-3 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block px-4 py-3 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-all"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            <div className="pt-4 border-t border-white/10 space-y-2">
+            <div className="pt-3 border-t border-border space-y-2 mt-2">
               <a
                 href="https://app.devver.app"
-                className="block px-4 py-3 text-sm font-semibold text-white text-center rounded-lg hover:bg-white/10 transition-all"
+                className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-all text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Sign In
+              </a>
+              <a
+                href="https://app.devver.app"
+                className="block bg-primary text-primary-foreground rounded-md py-2.5 text-sm font-medium text-center hover:opacity-90 transition-all"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Get Started
               </a>
             </div>
           </div>
