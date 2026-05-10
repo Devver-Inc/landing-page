@@ -127,7 +127,6 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.07 }}
-              whileHover={{ y: -3 }}
               className="glass-surface rounded-2xl py-6 px-6 relative"
             >
               {/* Rating stars */}
@@ -184,8 +183,6 @@ export default function TestimonialsSection() {
           <motion.a
             href="https://app.devver.app"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-md h-9 px-4 text-sm font-medium hover:opacity-90 transition-all"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
           >
             Start Your Free Trial
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

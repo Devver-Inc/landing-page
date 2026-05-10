@@ -95,7 +95,6 @@ export default function FeaturesShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.07 }}
-              whileHover={{ y: -3 }}
               className="glass-surface rounded-2xl py-6 px-6 group"
             >
               {/* Icon */}

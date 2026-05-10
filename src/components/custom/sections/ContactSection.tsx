@@ -147,8 +147,6 @@ export default function ContactSection() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
                   className={`w-full rounded-md h-9 text-sm font-medium transition-all ${
                     isSubmitting
                       ? "bg-muted text-muted-foreground cursor-not-allowed"
@@ -197,7 +195,6 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.6 + index * 0.07 }}
-              whileHover={{ y: -2 }}
               className="glass-surface rounded-2xl py-5 px-5 text-center group"
             >
               <div className="text-2xl mb-2">{item.icon}</div>

@@ -47,8 +47,6 @@ export default function HeroSection() {
           <motion.a
             href="https://app.devver.app"
             className="bg-primary text-primary-foreground rounded-md h-9 px-4 text-sm font-medium hover:opacity-90 transition-all inline-flex items-center gap-2"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
           >
             Start for Free
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,8 +57,6 @@ export default function HeroSection() {
           <motion.a
             href="#demo"
             className="border border-border bg-card/70 rounded-md h-9 px-4 text-sm font-medium text-foreground hover:bg-accent transition-all inline-flex items-center"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
           >
             Watch Demo
           </motion.a>

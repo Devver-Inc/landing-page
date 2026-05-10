@@ -39,8 +39,6 @@ export default function FloatingNavbar() {
               <motion.a
                 href="#"
                 className="flex items-center gap-2.5 group"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
               >
                 <img src="/favicon.png" alt="Devver Logo" className="h-8 w-8 rounded-lg" />
                 <div className="flex items-center gap-2">
@@ -70,16 +68,12 @@ export default function FloatingNavbar() {
                 <motion.a
                   href="https://app.devver.app"
                   className="border border-border bg-card/70 rounded-md h-9 px-4 text-sm font-medium text-foreground hover:bg-accent transition-all inline-flex items-center"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
                 >
                   Sign In
                 </motion.a>
                 <motion.a
                   href="https://app.devver.app"
                   className="bg-primary text-primary-foreground rounded-md h-9 px-4 text-sm font-medium hover:opacity-90 transition-all inline-flex items-center"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
                 >
                   Get Started
                 </motion.a>

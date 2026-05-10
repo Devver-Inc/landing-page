@@ -136,8 +136,6 @@ export default function PricingSection() {
 
                 <motion.a
                   href={tier.name === "Enterprise" ? "#contact" : "https://app.devver.app"}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                   className={`w-full rounded-md h-9 text-sm font-medium transition-all mb-6 inline-flex items-center justify-center ${
                     tier.highlight
                       ? "bg-primary text-primary-foreground hover:opacity-90"
