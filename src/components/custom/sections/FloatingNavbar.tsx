@@ -6,7 +6,7 @@ export default function FloatingNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
 
-  const navbarBackground = useTransform(scrollY, [0, 100], ["rgba(15, 23, 42, 0)", "rgba(15, 23, 42, 0.95)"]);
+  const navbarBackground = useTransform(scrollY, [0, 100], ["rgba(10, 10, 10, 0)", "rgba(10, 10, 10, 0.95)"]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +20,8 @@ export default function FloatingNavbar() {
   const navItems = [
     { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Integrations", href: "#integrations" },
     { label: "Pricing", href: "#pricing" },
-    { label: "Docs", href: "#docs" },
+    { label: "Docs", href: "https://docs.devver.app" },
   ];
 
   return (
@@ -33,14 +32,14 @@ export default function FloatingNavbar() {
             style={{
               backgroundColor: navbarBackground,
             }}
-            className={`rounded-2xl border transition-all duration-300 ${isScrolled ? "border-white/20 shadow-2xl shadow-indigo-500/10" : "border-white/10"}`}
+            className={`rounded-2xl border transition-all duration-300 ${isScrolled ? "border-white/20 shadow-2xl shadow-emerald-500/10" : "border-white/10"}`}
           >
             <div className="flex items-center justify-between px-6 py-4">
               {/* Logo */}
               <motion.a href="#" className="flex items-center gap-3 group" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <div className="relative">
                   <div
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl opacity-20 group-hover:opacity-40 transition-opacity"
+                    className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-600 rounded-xl opacity-20 group-hover:opacity-40 transition-opacity"
                     style={{ filter: "blur(8px)" }}
                   ></div>
                   <img src="/favicon.png" alt="Devver Logo" className="relative h-10 w-10 rounded-xl" />
@@ -57,7 +56,7 @@ export default function FloatingNavbar() {
                   <motion.a
                     key={item.href}
                     href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-all"
+                    className="px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white rounded-lg hover:bg-white/10 transition-all"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -105,13 +104,13 @@ export default function FloatingNavbar() {
         }}
         className="fixed top-24 left-0 right-0 z-40 md:hidden overflow-hidden"
       >
-        <div className="mx-4 bg-slate-900/98 rounded-2xl border border-white/20 shadow-2xl">
+        <div className="mx-4 bg-neutral-900/98 rounded-2xl border border-white/20 shadow-2xl">
           <div className="p-4 space-y-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block px-4 py-3 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                className="block px-4 py-3 text-sm font-medium text-neutral-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}

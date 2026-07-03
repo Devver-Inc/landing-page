@@ -40,7 +40,7 @@ export default function DeploymentTimer() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        className="inline-flex items-center gap-3 px-6 py-3 bg-slate-900/90 rounded-full border border-slate-700 backdrop-blur-sm"
+        className="inline-flex items-center gap-3 px-6 py-3 bg-neutral-900/90 rounded-full border border-neutral-700 backdrop-blur-sm"
       >
         <span className="relative flex h-3 w-3">
           {!isComplete && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>}
@@ -55,10 +55,10 @@ export default function DeploymentTimer() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="text-7xl md:text-8xl font-bold tracking-tight"
       >
-        <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent tabular-nums">{count}s</span>
+        <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent tabular-nums">{count}s</span>
       </motion.div>
 
-      <motion.p initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-xl text-slate-300">
+      <motion.p initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-xl text-neutral-300">
         Average deployment time
       </motion.p>
     </div>

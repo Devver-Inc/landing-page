@@ -17,7 +17,7 @@ export default function SpeedVisualization() {
         return (
           <motion.div
             key={i}
-            className="absolute h-[1px] bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent"
+            className="absolute h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"
             style={{
               top: `${top}%`,
               width: width,
@@ -64,7 +64,7 @@ export default function SpeedVisualization() {
       })}
 
       {/* Side Vignettes to fade out lines smoothly */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/50 via-transparent to-slate-900/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/50 via-transparent to-neutral-900/50" />
     </div>
   );
 }

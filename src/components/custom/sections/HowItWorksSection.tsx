@@ -15,7 +15,7 @@ devver login
 # Connect your repo
 devver init`,
     icon: "🔗",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-emerald-500 to-green-500",
   },
   {
     number: "02",
@@ -29,7 +29,7 @@ devver deploy --preview
   with:
     preview: true`,
     icon: "🚀",
-    color: "from-purple-500 to-pink-500",
+    color: "from-green-500 to-emerald-500",
   },
   {
     number: "03",
@@ -44,7 +44,7 @@ devver share --email team@company.com
 # Enable comments
 devver comments enable`,
     icon: "💬",
-    color: "from-emerald-500 to-teal-500",
+    color: "from-green-500 to-emerald-500",
   },
 ];
 
@@ -52,12 +52,12 @@ export default function HowItWorksSection() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="how-it-works" className="relative py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <section id="how-it-works" className="relative py-20 bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-slate-800 opacity-20"></div>
+      <div className="absolute inset-0 bg-grid-neutral-800 opacity-20"></div>
 
       <motion.div
-        className="absolute top-20 right-20 w-72 h-72 bg-indigo-600/10 rounded-full opacity-20"
+        className="absolute top-20 right-20 w-72 h-72 bg-emerald-600/10 rounded-full opacity-20"
         style={{ filter: "blur(20px)" }}
         animate={{
           scale: [1, 1.05, 1],
@@ -78,7 +78,7 @@ export default function HowItWorksSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-slate-800/80 border border-slate-700"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-neutral-800/80 border border-neutral-700"
           >
             <span className="text-2xl">⚡</span>
             <span className="text-sm font-semibold text-white">Simple Process</span>
@@ -91,7 +91,7 @@ export default function HowItWorksSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold text-white mb-6"
           >
-            Deploy in <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">3 Easy Steps</span>
+            Deploy in <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-400 bg-clip-text text-transparent">3 Easy Steps</span>
           </motion.h2>
 
           <motion.p
@@ -99,7 +99,7 @@ export default function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-slate-400 max-w-3xl mx-auto"
+            className="text-xl text-neutral-400 max-w-3xl mx-auto"
           >
             From code to production-ready preview in less than a minute
           </motion.p>
@@ -119,14 +119,14 @@ export default function HowItWorksSection() {
                 className={`relative cursor-pointer group transition-all duration-300 ${activeStep === index ? "scale-105" : "hover:scale-102"}`}
               >
                 {/* Connection line */}
-                {index < steps.length - 1 && <div className="absolute left-8 top-20 w-0.5 h-16 bg-gradient-to-b from-slate-600 to-transparent"></div>}
+                {index < steps.length - 1 && <div className="absolute left-8 top-20 w-0.5 h-16 bg-gradient-to-b from-neutral-600 to-transparent"></div>}
 
                 {/* Card */}
                 <div
                   className={`relative rounded-2xl border-2 p-6 transition-all duration-300 ${
                     activeStep === index
-                      ? "bg-slate-800 border-indigo-500 shadow-2xl shadow-indigo-500/20"
-                      : "bg-slate-900/50 border-slate-700 hover:border-slate-600 hover:shadow-lg"
+                      ? "bg-neutral-800 border-emerald-500 shadow-2xl shadow-emerald-500/20"
+                      : "bg-neutral-900/50 border-neutral-700 hover:border-neutral-600 hover:shadow-lg"
                   }`}
                 >
                   <div className="flex items-start gap-4">
@@ -144,13 +144,13 @@ export default function HowItWorksSection() {
                         <span className={`text-sm font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}>{step.number}</span>
                         <h3 className="text-xl font-bold text-white">{step.title}</h3>
                       </div>
-                      <p className="text-slate-400 leading-relaxed">{step.description}</p>
+                      <p className="text-neutral-400 leading-relaxed">{step.description}</p>
                     </div>
 
                     {/* Active indicator */}
                     {activeStep === index && (
                       <motion.div layoutId="activeIndicator" className="absolute right-4 top-1/2 -translate-y-1/2">
-                        <div className="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 animate-pulse"></div>
+                        <div className="w-3 h-3 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 animate-pulse"></div>
                       </motion.div>
                     )}
                   </div>
@@ -175,16 +175,16 @@ export default function HowItWorksSection() {
               ></div>
 
               {/* Terminal */}
-              <div className="relative bg-slate-900 rounded-3xl border border-slate-700 shadow-2xl overflow-hidden z-10">
+              <div className="relative bg-neutral-900 rounded-3xl border border-neutral-700 shadow-2xl overflow-hidden z-10">
                 {/* Terminal header */}
-                <div className="flex items-center gap-2 px-6 py-4 bg-slate-800 border-b border-slate-700">
+                <div className="flex items-center gap-2 px-6 py-4 bg-neutral-800 border-b border-neutral-700">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <span className="text-sm text-slate-400 font-mono">Step {steps[activeStep].number} - Terminal</span>
+                    <span className="text-sm text-neutral-400 font-mono">Step {steps[activeStep].number} - Terminal</span>
                   </div>
                   <div className="flex gap-2">
                     <div className={`px-3 py-1 rounded-full bg-gradient-to-r ${steps[activeStep].color} text-white text-xs font-semibold`}>Active</div>
@@ -194,7 +194,7 @@ export default function HowItWorksSection() {
                 {/* Terminal content */}
                 <div className="p-8 font-mono text-sm min-h-[300px]">
                   <motion.div key={activeStep} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-                    <pre className="text-slate-300 whitespace-pre-wrap leading-relaxed">{steps[activeStep].code}</pre>
+                    <pre className="text-neutral-300 whitespace-pre-wrap leading-relaxed">{steps[activeStep].code}</pre>
 
                     {/* Success indicator */}
                     <motion.div
@@ -212,7 +212,7 @@ export default function HowItWorksSection() {
                 </div>
 
                 {/* Progress bar */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-800 pointer-events-none">
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-800 pointer-events-none">
                   <motion.div
                     className={`h-full bg-gradient-to-r ${steps[activeStep].color}`}
                     initial={{ width: "0%" }}
@@ -230,8 +230,8 @@ export default function HowItWorksSection() {
                   disabled={activeStep === 0}
                   className={`px-6 py-3 rounded-xl font-semibold transition-all relative z-30 ${
                     activeStep === 0
-                      ? "bg-slate-800 text-slate-600 cursor-not-allowed border border-slate-700"
-                      : "bg-slate-800 text-white hover:bg-slate-700 border border-slate-600 cursor-pointer"
+                      ? "bg-neutral-800 text-neutral-600 cursor-not-allowed border border-neutral-700"
+                      : "bg-neutral-800 text-white hover:bg-neutral-700 border border-neutral-600 cursor-pointer"
                   }`}
                 >
                   ← Previous
@@ -243,7 +243,7 @@ export default function HowItWorksSection() {
                       key={index}
                       onClick={() => setActiveStep(index)}
                       className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
-                        activeStep === index ? "bg-gradient-to-r from-indigo-500 to-purple-500 w-8" : "bg-slate-600 hover:bg-slate-500"
+                        activeStep === index ? "bg-gradient-to-r from-emerald-500 to-green-500 w-8" : "bg-neutral-600 hover:bg-neutral-500"
                       }`}
                     />
                   ))}
@@ -254,8 +254,8 @@ export default function HowItWorksSection() {
                   disabled={activeStep === steps.length - 1}
                   className={`px-6 py-3 rounded-xl font-semibold transition-all relative z-30 ${
                     activeStep === steps.length - 1
-                      ? "bg-slate-800 text-slate-600 cursor-not-allowed border border-slate-700"
-                      : "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/50 cursor-pointer"
+                      ? "bg-neutral-800 text-neutral-600 cursor-not-allowed border border-neutral-700"
+                      : "bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:shadow-lg hover:shadow-emerald-500/50 cursor-pointer"
                   }`}
                 >
                   Next →

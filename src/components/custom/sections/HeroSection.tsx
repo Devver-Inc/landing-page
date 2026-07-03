@@ -4,13 +4,13 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-900">
+      <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-950 to-neutral-900">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
       </div>
 
       {/* Single animated gradient orb - optimized for performance */}
       <motion.div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full opacity-20"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-r from-emerald-600 to-green-600 rounded-full opacity-20"
         style={{ filter: "blur(40px)" }}
         animate={{
           scale: [1, 1.05, 1],
@@ -29,7 +29,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-slate-800/80 border border-slate-700 text-sm font-medium text-white"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-neutral-800/80 border border-neutral-700 text-sm font-medium text-white"
         >
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -46,14 +46,14 @@ export default function HeroSection() {
         >
           Ship Faster with
           <br />
-          <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Instant Preview URLs</span>
+          <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-400 bg-clip-text text-transparent">Instant Preview URLs</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-neutral-300 mb-12 max-w-3xl mx-auto leading-relaxed"
         >
           Deploy ephemeral test environments with one command. Let your clients, managers, and team test features instantly.
         </motion.p>
@@ -66,7 +66,7 @@ export default function HeroSection() {
         >
           <motion.a
             href="#waitlist"
-            className="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full shadow-lg shadow-indigo-500/50 overflow-hidden"
+            className="group relative px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-full shadow-lg shadow-emerald-500/50 overflow-hidden"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -76,12 +76,12 @@ export default function HeroSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
           </motion.a>
 
           <motion.a
             href="#demo"
-            className="px-8 py-4 bg-slate-800 text-white font-semibold rounded-full border border-slate-700 hover:bg-slate-700 transition-all"
+            className="px-8 py-4 bg-neutral-800 text-white font-semibold rounded-full border border-neutral-700 hover:bg-neutral-700 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -93,18 +93,18 @@ export default function HeroSection() {
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }} className="max-w-3xl mx-auto">
           <div className="relative group">
             <div
-              className="absolute -inset-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl opacity-30 group-hover:opacity-50 transition duration-500"
+              className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-600 rounded-2xl opacity-30 group-hover:opacity-50 transition duration-500"
               style={{ filter: "blur(16px)" }}
             ></div>
-            <div className="relative bg-slate-900 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden text-left">
+            <div className="relative bg-neutral-900 rounded-2xl border border-neutral-700 shadow-2xl overflow-hidden text-left">
               {/* Terminal header */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-slate-800 border-b border-slate-700">
+              <div className="flex items-center gap-2 px-4 py-3 bg-neutral-800 border-b border-neutral-700">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <span className="text-xs text-slate-400 ml-2">terminal</span>
+                <span className="text-xs text-neutral-400 ml-2">terminal</span>
               </div>
 
               {/* Terminal content */}
@@ -115,7 +115,7 @@ export default function HeroSection() {
                     npx devver deploy --preview
                   </motion.span>
                 </div>
-                <div className="text-slate-400 space-y-1">
+                <div className="text-neutral-400 space-y-1">
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.4 }} className="flex items-center gap-2">
                     <span className="text-emerald-400">✓</span>
                     Building application...
@@ -127,7 +127,7 @@ export default function HeroSection() {
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.8 }} className="flex items-center gap-2">
                     <span className="text-emerald-400">✓</span>
                     Preview URL:
-                    <span className="text-indigo-400 underline">https://pr-123.devver.app</span>
+                    <span className="text-emerald-400 underline">https://pr-123.devver.app</span>
                   </motion.div>
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 4.2 }} className="mt-3 text-emerald-400">
                     🚀 Deployed in 38 seconds
@@ -148,7 +148,7 @@ export default function HeroSection() {
           ].map((stat, index) => (
             <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 + index * 0.05 }} className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
-              <div className="text-sm text-slate-400">{stat.label}</div>
+              <div className="text-sm text-neutral-400">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

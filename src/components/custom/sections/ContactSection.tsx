@@ -36,12 +36,12 @@ export default function ContactSection() {
   };
 
   return (
-    <section ref={containerRef} id="contact" className="relative py-32 bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-950 overflow-hidden">
+    <section ref={containerRef} id="contact" className="relative py-32 bg-gradient-to-b from-neutral-950 via-neutral-950 to-neutral-950 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-grid-slate-800 opacity-20"></div>
+        <div className="absolute inset-0 bg-grid-neutral-800 opacity-20"></div>
         <motion.div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full opacity-15"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-emerald-600 to-green-600 rounded-full opacity-15"
           style={{ filter: "blur(60px)" }}
           animate={{
             scale: [1, 1.15, 1],
@@ -63,7 +63,7 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-slate-800/80 border border-slate-700"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-neutral-800/80 border border-neutral-700"
           >
             <span className="text-2xl">✉️</span>
             <span className="text-sm font-semibold text-white">Get in Touch</span>
@@ -76,7 +76,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold text-white mb-6"
           >
-            Let's Talk About <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Your Project</span>
+            Let's Talk About <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-400 bg-clip-text text-transparent">Your Project</span>
           </motion.h2>
 
           <motion.p
@@ -84,7 +84,7 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-slate-400 max-w-2xl mx-auto"
+            className="text-xl text-neutral-400 max-w-2xl mx-auto"
           >
             Have questions? Want a demo? Get in touch and we'll respond within 24 hours.
           </motion.p>
@@ -92,21 +92,21 @@ export default function ContactSection() {
 
         {/* Contact Form */}
         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="relative">
-          <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl opacity-20" style={{ filter: "blur(12px)" }}></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-600 rounded-3xl opacity-20" style={{ filter: "blur(12px)" }}></div>
 
-          <div className="relative bg-slate-900/95 rounded-3xl border border-slate-800 p-8 md:p-12 shadow-2xl">
+          <div className="relative bg-neutral-900/95 rounded-3xl border border-neutral-800 p-8 md:p-12 shadow-2xl">
             {submitStatus === "success" ? (
               <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center py-12">
-                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
-                <p className="text-slate-400 mb-6">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                <p className="text-neutral-400 mb-6">Thank you for reaching out. We'll get back to you within 24 hours.</p>
                 <button
                   onClick={() => setSubmitStatus("idle")}
-                  className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-indigo-500/50 transition-all"
+                  className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-500/50 transition-all"
                 >
                   Send Another Message
                 </button>
@@ -124,7 +124,7 @@ export default function ContactSection() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
                     placeholder="John Doe"
                   />
                 </div>
@@ -140,7 +140,7 @@ export default function ContactSection() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -156,7 +156,7 @@ export default function ContactSection() {
                     onChange={(e) => setMessage(e.target.value)}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
                     placeholder="Tell us about your project..."
                   />
                 </div>
@@ -168,7 +168,7 @@ export default function ContactSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className={`w-full py-4 rounded-xl font-semibold text-white transition-all ${
-                    isSubmitting ? "bg-slate-700 cursor-not-allowed" : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-lg hover:shadow-indigo-500/50"
+                    isSubmitting ? "bg-neutral-700 cursor-not-allowed" : "bg-gradient-to-r from-emerald-600 to-green-600 hover:shadow-lg hover:shadow-emerald-500/50"
                   }`}
                 >
                   {isSubmitting ? (
@@ -222,7 +222,7 @@ export default function ContactSection() {
               icon: "📚",
               title: "Documentation",
               value: "View Docs",
-              link: "#docs",
+              link: "https://docs.devver.app",
             },
           ].map((item, index) => (
             <motion.a
@@ -233,11 +233,11 @@ export default function ContactSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="text-center p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-all group"
+              className="text-center p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-all group"
             >
               <div className="text-4xl mb-3">{item.icon}</div>
-              <div className="text-sm text-slate-500 mb-1">{item.title}</div>
-              <div className="text-white font-semibold group-hover:text-indigo-400 transition-colors">{item.value}</div>
+              <div className="text-sm text-neutral-500 mb-1">{item.title}</div>
+              <div className="text-white font-semibold group-hover:text-emerald-400 transition-colors">{item.value}</div>
             </motion.a>
           ))}
         </motion.div>

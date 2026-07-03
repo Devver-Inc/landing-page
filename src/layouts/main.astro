@@ -4,7 +4,7 @@ import "../styles/global.css";
 const { title = "Devver | Déployez en 1 commande", description = "Prévisualisez, validez et shippez vos PRs avec des URLs éphémères ultra-rapides." } = Astro.props;
 ---
 
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth dark">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
@@ -17,7 +17,7 @@ const { title = "Devver | Déployez en 1 commande", description = "Prévisualise
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
     </head>
-    <body class="min-h-screen bg-slate-900 text-foreground antialiased">
+    <body class="min-h-screen bg-background text-foreground antialiased">
         <slot />
     </body>
 </html>
